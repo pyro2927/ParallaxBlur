@@ -100,7 +100,6 @@
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* ParallaxBlur */,
-				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				CF6059F037494BF2A04110BD /* Pods-ParallaxBlur.xcconfig */,
@@ -140,6 +139,7 @@
 				6003F5A5195388D20070C39A /* JPBViewController.h */,
 				6003F5A6195388D20070C39A /* JPBViewController.m */,
 				D86AEC5619A7C61B00D714AA /* meatballs.jpeg */,
+				6003F5B5195388D20070C39A /* Tests */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -163,7 +163,8 @@
 				6003F5BB195388D20070C39A /* Tests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
-			path = Tests;
+			name = Tests;
+			path = ../Tests;
 			sourceTree = "<group>";
 		};
 		6003F5B6195388D20070C39A /* Supporting Files */ = {
