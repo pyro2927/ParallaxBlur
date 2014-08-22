@@ -19,18 +19,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self setHeaderImage:[UIImage imageNamed:@"meatballs.jpeg"]];
+    [self setTitleText:@"The Best Title in the World"];
+    [self setSubtitleText:@"ikea meatballs are the bomb"];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, [self headerHeight] - 40, 180, 30)];
-    [label setBackgroundColor:[UIColor clearColor]];
-    [label setTextColor:[UIColor whiteColor]];
-    [label setFont:[UIFont systemFontOfSize:20]];
-    [label setText:@"Sample Text"];
-    [label setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
-    [self addHeaderOverlayView:label];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 30;
+    return 30; //helps for testing scrolling on iPad
 }
 
 @end

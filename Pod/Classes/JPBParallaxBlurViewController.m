@@ -6,10 +6,10 @@
 //
 //
 
-#import "ParallaxBlurViewController.h"
+#import "JPBParallaxBlurViewController.h"
 #import "FXBlurView.h"
 
-@interface ParallaxBlurViewController ()<UIScrollViewDelegate> {
+@interface JPBParallaxBlurViewController ()<UIScrollViewDelegate> {
     UIScrollView *_mainScrollView;
     UIScrollView *_backgroundScrollView;
     UIView *_floatingHeaderView;
@@ -23,7 +23,7 @@
 }
 @end
 
-@implementation ParallaxBlurViewController
+@implementation JPBParallaxBlurViewController
 
 static CGFloat INVIS_DELTA = 50.0f;
 static CGFloat BLUR_DISTANCE = 200.0f;

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ParallaxTableViewController.h"
+#import "JPBFloatingTextViewController.h"
 
-@interface JPBViewController : ParallaxTableViewController
+@interface JPBViewController : JPBFloatingTextViewController
 
 @end

@@ -6,15 +6,15 @@
 //
 //
 
-#import "ParallaxTableViewController.h"
+#import "JPBParallaxTableViewController.h"
 
-@interface ParallaxTableViewController (){
+@interface JPBParallaxTableViewController (){
     UITableView *_tableView;
 }
 
 @end
 
-@implementation ParallaxTableViewController
+@implementation JPBParallaxTableViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];

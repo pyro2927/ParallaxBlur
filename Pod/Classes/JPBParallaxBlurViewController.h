@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ParallaxBlurViewController : UIViewController
+@interface JPBParallaxBlurViewController : UIViewController
 
 - (void)setHeaderImage:(UIImage*)headerImage;
 - (void)addHeaderOverlayView:(UIView*)overlay;
