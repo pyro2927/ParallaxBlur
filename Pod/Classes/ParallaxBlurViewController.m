@@ -27,24 +27,31 @@
 
 static CGFloat INVIS_DELTA = 50.0f;
 static CGFloat BLUR_DISTANCE = 200.0f;
+static CGFloat HEADER_HEIGHT = 60.0f;
+static CGFloat IMAGE_HEIGHT = 320.0f;
 
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     _headerOverlayViews = [NSMutableArray array];
     
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     _mainScrollView.delegate = self;
     _mainScrollView.bounces = YES;
     _mainScrollView.alwaysBounceVertical = YES;
     _mainScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 1000);
     _mainScrollView.showsVerticalScrollIndicator = YES;
+    _mainScrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _mainScrollView.autoresizesSubviews = YES;
     self.view = _mainScrollView;
     
-    _backgroundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 320)];
+    _backgroundScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), IMAGE_HEIGHT)];
     _backgroundScrollView.scrollEnabled = NO;
+    _backgroundScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _backgroundScrollView.autoresizesSubviews = YES;
     _backgroundScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 1000);
     _headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_backgroundScrollView.frame), CGRectGetHeight(_backgroundScrollView.frame))];
+    _headerImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [_headerImageView setContentMode:UIViewContentModeScaleAspectFill];
     _headerImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_backgroundScrollView addSubview:_headerImageView];
@@ -59,10 +66,11 @@ static CGFloat BLUR_DISTANCE = 200.0f;
     
     [_backgroundScrollView addSubview:_blurredImageView];
     
-    _scrollViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_backgroundScrollView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 50.0f )];
-    [_scrollViewContainer setBackgroundColor:[UIColor yellowColor]];
+    _scrollViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_backgroundScrollView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - [self offsetHeight] )];
+    _scrollViewContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     _contentView = [self contentView];
+    _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [_scrollViewContainer addSubview:_contentView];
     
     [_mainScrollView addSubview:_backgroundScrollView];
@@ -73,16 +81,32 @@ static CGFloat BLUR_DISTANCE = 200.0f;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     _mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), _contentView.contentSize.height + CGRectGetHeight(_backgroundScrollView.frame));
+    [_contentView setFrame:CGRectMake(0, 0, CGRectGetWidth(_scrollViewContainer.frame), CGRectGetHeight(self.view.frame) - [self offsetHeight] )];
+}
+
+- (CGFloat)navBarHeight{
+    if (self.navigationController && !self.navigationController.navigationBarHidden) {
+        return CGRectGetHeight(self.navigationController.navigationBar.frame) + 20; //include 20 for the status bar
+    }
+    return 0.0f;
+}
+
+- (CGFloat)offsetHeight{
+    return HEADER_HEIGHT + [self navBarHeight];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat delta = 0.0f;
-    CGRect rect = CGRectMake(0, 0, 320, 320);
+    CGRect rect = CGRectMake(0, 0, CGRectGetWidth(_scrollViewContainer.frame), IMAGE_HEIGHT);
+    
+    CGFloat backgroundScrollViewLimit = _backgroundScrollView.frame.size.height - [self offsetHeight];
+    
+    
     // Here is where I do the "Zooming" image and the quick fade out the text and toolbar
     if (scrollView.contentOffset.y < 0.0f) {
         //calculate delta
-        delta = fabs(MIN(0.0f, _mainScrollView.contentOffset.y));
-        _backgroundScrollView.frame = CGRectMake(CGRectGetMinX(rect) - delta / 2.0f, CGRectGetMinY(rect) - delta, CGRectGetWidth(rect) + delta, CGRectGetHeight(rect) + delta);
+        delta = fabs(MIN(0.0f, _mainScrollView.contentOffset.y + [self navBarHeight]));
+        _backgroundScrollView.frame = CGRectMake(CGRectGetMinX(rect) - delta / 2.0f, CGRectGetMinY(rect) - delta, CGRectGetWidth(_scrollViewContainer.frame) + delta, CGRectGetHeight(rect) + delta);
         [_floatingHeaderView setAlpha:(INVIS_DELTA - delta) / INVIS_DELTA];
     } else {
         delta = _mainScrollView.contentOffset.y;
@@ -92,12 +116,11 @@ static CGFloat BLUR_DISTANCE = 200.0f;
         [_blurredImageView setAlpha:newAlpha];
         [_floatingHeaderView setAlpha:1];
         
-        CGFloat backgroundScrollViewLimit = _backgroundScrollView.frame.size.height - 50;
         // Here I check whether or not the user has scrolled passed the limit where I want to stick the header, if they have then I move the frame with the scroll view
         // to give it the sticky header look
         if (delta > backgroundScrollViewLimit) {
-            _backgroundScrollView.frame = (CGRect) {.origin = {0, delta - _backgroundScrollView.frame.size.height + 50}, .size = {self.view.frame.size.width, 320}};
-            _floatingHeaderView.frame = (CGRect) {.origin = {0, delta - _floatingHeaderView.frame.size.height + 50}, .size = {self.view.frame.size.width, 320}};
+            _backgroundScrollView.frame = (CGRect) {.origin = {0, delta - _backgroundScrollView.frame.size.height + [self offsetHeight]}, .size = {CGRectGetWidth(_scrollViewContainer.frame), IMAGE_HEIGHT}};
+            _floatingHeaderView.frame = (CGRect) {.origin = {0, delta - _floatingHeaderView.frame.size.height + [self offsetHeight]}, .size = {CGRectGetWidth(_scrollViewContainer.frame), IMAGE_HEIGHT}};
             _scrollViewContainer.frame = (CGRect){.origin = {0, CGRectGetMinY(_backgroundScrollView.frame) + CGRectGetHeight(_backgroundScrollView.frame)}, .size = _scrollViewContainer.frame.size };
             _contentView.contentOffset = CGPointMake (0, delta - backgroundScrollViewLimit);
             CGFloat contentOffsetY = -backgroundScrollViewLimit * 0.5f;
@@ -114,8 +137,8 @@ static CGFloat BLUR_DISTANCE = 200.0f;
 }
 
 - (UIScrollView*)contentView{
-    UIScrollView *contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 50.0f )];
-        contentView.scrollEnabled = NO;
+    UIScrollView *contentView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+    contentView.scrollEnabled = NO;
     return contentView;
 }
 

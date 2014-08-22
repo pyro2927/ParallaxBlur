@@ -21,7 +21,7 @@
 }
 
 - (UIScrollView*)contentView{
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 50.0f)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
     _tableView.scrollEnabled = NO;
     _tableView.delegate = self;
     _tableView.dataSource = self;
