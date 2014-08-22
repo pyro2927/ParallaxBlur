@@ -17,11 +17,11 @@ Pod::Spec.new do |s|
                        * Markdown format.
                        * Don't worry about the indent, we strip it!
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/ParallaxBlur"
+  s.homepage         = "https://github.com/pyro2927/ParallaxBlur"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "pyro2927" => "joseph@pintozzi.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/ParallaxBlur.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/pyro2927/ParallaxBlur.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
@@ -32,5 +32,5 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'FXBlurView', '~> 1.6.2'
 end

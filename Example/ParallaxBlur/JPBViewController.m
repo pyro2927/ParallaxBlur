@@ -18,12 +18,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self setHeaderImage:[UIImage imageNamed:@"meatballs.jpeg"]];
+    
+    UITextView *label = [[UITextView alloc] initWithFrame:CGRectMake(10, [self headerHeight] - 40, 180, 30)];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setFont:[UIFont systemFontOfSize:20]];
+    [label setText:@"Sample Text"];
+    [label setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
+    [self addHeaderOverlayView:label];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
 }
 
 @end

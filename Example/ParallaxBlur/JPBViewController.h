@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ParallaxTableViewController.h"
 
-@interface JPBViewController : UIViewController
+@interface JPBViewController : ParallaxTableViewController
 
 @end
