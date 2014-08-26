@@ -33,6 +33,12 @@ You can also more heavily customize the header by using `addHeaderOverlayView:`.
     [imageView setImage:[UIImage imageNamed:@"awesome.jpg"]];
     [self addHeaderOverlayView:imageView];
 
+## Geeky Stuff
+
+![](./asplode.png)
+
+The view controller manages three `UIScrollViews`, one for the header/background, one for the lower content, and an "main" one to handle user interactions and delegate callbacks.  The image "blurring" is just a gradual change in a secondary image overlay's alpha, which is a blurred version of the image set, precalculated and run through `FXBlurView`.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
