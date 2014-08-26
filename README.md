@@ -7,6 +7,10 @@
 
 ParallaxBlur aims the be an easy-to-use implementation of a UITableController with a parallax header.  It is screen resolution independant, orientation indendant, and will automatically adjust if there is a navigation bar in place.
 
+The user interaction is fairly straightforward.  The header image blurs as you scroll up, leaving a 60 pixel area always visible, and expands out the header image if you pull down, while at the same time making the overlay views transparent.
+
+Developed at [Software for Good](http://sfg.io).
+
 ![](./preview.gif)
 
 Inspiration was taken from Aaron Pang's [SecretViewer](https://github.com/aaronpang/SecretViewer).  I liked the way it looked and behaved, but it wasn't extremely customizable, and not setup to be used as a Pod.
