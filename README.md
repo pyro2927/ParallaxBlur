@@ -11,7 +11,7 @@ ParallaxBlur aims the be an easy-to-use implementation of a UITableController wi
 
 Inspiration was taken from Aaron Pang's [SecretViewer](https://github.com/aaronpang/SecretViewer).  I liked the way it looked and behaved, but it wasn't extremely customizable, and not setup to be used as a Pod.
 
-## Usage
+## Basic Usage
 
 Usage is pretty simple.  Subclass `JPBFloatingTextViewController` and then customize it within `viewDidLoad`:
 
@@ -20,6 +20,14 @@ Usage is pretty simple.  Subclass `JPBFloatingTextViewController` and then custo
     [self setSubtitleText:@"ikea meatballs are the bomb"];
 
 You should override the required `UITableViewDatasource` and `UITableViewDelegate` methods to supply the content section with cells and handle user selections.
+
+## Advanced Usage
+
+You can also more heavily customize the header by using `addHeaderOverlayView:`.  Using this will add the passed `UIView` to the scrolling header.  An example can be seen in `CustomHeaderViewController.m`.  You can get the height of the header (useful for getting things to align near the bottom) by calling `[self headerHeight]`.
+
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, [self headerHeight] - 100, 90, 90)];
+    [imageView setImage:[UIImage imageNamed:@"awesome.jpg"]];
+    [self addHeaderOverlayView:imageView];
 
 ## Example
 
