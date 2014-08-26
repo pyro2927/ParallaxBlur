@@ -24,6 +24,8 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		C6BAB5FA24CE4C30A26D94C0 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B20A197B0A467B97472543 /* libPods-Tests.a */; };
+		D85B254A19ACE9D000C8F2AA /* CustomHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D85B254919ACE9D000C8F2AA /* CustomHeaderViewController.m */; };
+		D85B254C19ACEA3400C8F2AA /* awesome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D85B254B19ACEA3400C8F2AA /* awesome.jpg */; };
 		D86AEC5719A7C61B00D714AA /* meatballs.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D86AEC5619A7C61B00D714AA /* meatballs.jpeg */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,9 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		CF6059F037494BF2A04110BD /* Pods-ParallaxBlur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParallaxBlur.xcconfig"; path = "Pods/Pods-ParallaxBlur.xcconfig"; sourceTree = "<group>"; };
+		D85B254819ACE9D000C8F2AA /* CustomHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHeaderViewController.h; sourceTree = "<group>"; };
+		D85B254919ACE9D000C8F2AA /* CustomHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHeaderViewController.m; sourceTree = "<group>"; };
+		D85B254B19ACEA3400C8F2AA /* awesome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = awesome.jpg; sourceTree = "<group>"; };
 		D86AEC5619A7C61B00D714AA /* meatballs.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meatballs.jpeg; sourceTree = "<group>"; };
 		F6C2828351AF479C837BB38A /* libPods-ParallaxBlur.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ParallaxBlur.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,7 +143,10 @@
 				6003F5A2195388D20070C39A /* Main_iPad.storyboard */,
 				6003F5A5195388D20070C39A /* JPBViewController.h */,
 				6003F5A6195388D20070C39A /* JPBViewController.m */,
+				D85B254819ACE9D000C8F2AA /* CustomHeaderViewController.h */,
+				D85B254919ACE9D000C8F2AA /* CustomHeaderViewController.m */,
 				D86AEC5619A7C61B00D714AA /* meatballs.jpeg */,
+				D85B254B19ACEA3400C8F2AA /* awesome.jpg */,
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -273,6 +281,7 @@
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				D86AEC5719A7C61B00D714AA /* meatballs.jpeg in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				D85B254C19ACEA3400C8F2AA /* awesome.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +365,7 @@
 			files = (
 				6003F59E195388D20070C39A /* JPBAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* JPBViewController.m in Sources */,
+				D85B254A19ACE9D000C8F2AA /* CustomHeaderViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
