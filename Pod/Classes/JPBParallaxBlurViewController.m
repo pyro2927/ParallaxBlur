@@ -78,10 +78,14 @@ static CGFloat IMAGE_HEIGHT = 320.0f;
     [_mainScrollView addSubview:_scrollViewContainer];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_contentView setFrame:CGRectMake(0, 0, CGRectGetWidth(_scrollViewContainer.frame), CGRectGetHeight(self.view.frame) - [self offsetHeight] )];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     _mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), _contentView.contentSize.height + CGRectGetHeight(_backgroundScrollView.frame));
-    [_contentView setFrame:CGRectMake(0, 0, CGRectGetWidth(_scrollViewContainer.frame), CGRectGetHeight(self.view.frame) - [self offsetHeight] )];
 }
 
 - (CGFloat)navBarHeight{

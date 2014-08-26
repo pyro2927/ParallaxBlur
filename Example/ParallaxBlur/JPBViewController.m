@@ -21,7 +21,6 @@
     [self setHeaderImage:[UIImage imageNamed:@"meatballs.jpeg"]];
     [self setTitleText:@"The Best Title in the World"];
     [self setSubtitleText:@"ikea meatballs are the bomb"];
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
