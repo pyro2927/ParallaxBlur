@@ -11,6 +11,7 @@
 @interface JPBFloatingTextViewController () {
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
+    UIView *_labelBackground;
 }
 
 @end
@@ -19,6 +20,10 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    _labelBackground = [[UIView alloc] initWithFrame:CGRectMake(0, [self headerHeight] - 60, self.view.frame.size.width, 60)];
+    [self addHeaderOverlayView:_labelBackground];
+    
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, [self headerHeight] - 50, self.view.frame.size.width - 30, 25)];
     [_titleLabel setBackgroundColor:[UIColor clearColor]];
     [_titleLabel setTextColor:[UIColor whiteColor]];
@@ -40,6 +45,10 @@
 
 - (void)setSubtitleText:(NSString*)text{
     [_subtitleLabel setText:text];
+}
+
+- (void)selLabelBackground:(UIColor*)color{
+    _labelBackground.backgroundColor = color;
 }
 
 @end

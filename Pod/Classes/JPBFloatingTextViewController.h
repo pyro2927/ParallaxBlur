@@ -12,5 +12,6 @@
 
 - (void)setTitleText:(NSString*)text;
 - (void)setSubtitleText:(NSString*)text;
+- (void)selLabelBackground:(UIColor*)color;
 
 @end
