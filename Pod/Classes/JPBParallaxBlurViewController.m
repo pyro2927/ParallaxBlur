@@ -161,4 +161,8 @@ static CGFloat IMAGE_HEIGHT = 320.0f;
     return CGRectGetHeight(_backgroundScrollView.frame);
 }
 
+- (UIScrollView*)mainScrollView{
+    return _mainScrollView;
+}
+
 @end

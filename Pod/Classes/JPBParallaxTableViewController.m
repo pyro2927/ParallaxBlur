@@ -21,10 +21,12 @@
 }
 
 - (UIScrollView*)contentView{
-    _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
-    _tableView.scrollEnabled = NO;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
+        _tableView.scrollEnabled = NO;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
     return _tableView;
 }
 

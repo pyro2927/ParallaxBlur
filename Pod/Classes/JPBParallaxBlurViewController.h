@@ -13,5 +13,6 @@
 - (void)setHeaderImage:(UIImage*)headerImage;
 - (void)addHeaderOverlayView:(UIView*)overlay;
 - (CGFloat)headerHeight;
+- (UIScrollView*)mainScrollView;
 
 @end
