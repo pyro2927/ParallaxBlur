@@ -20,7 +20,7 @@
     [super viewDidLoad];
 }
 
-- (UIScrollView*)contentView{
+- (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero];
         _tableView.scrollEnabled = NO;
@@ -29,6 +29,10 @@
         _tableView.clipsToBounds = NO;
     }
     return _tableView;
+}
+
+- (UIScrollView *)contentView{
+    return [self tableView];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

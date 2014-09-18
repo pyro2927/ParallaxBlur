@@ -10,4 +10,6 @@
 
 @interface JPBParallaxTableViewController : JPBParallaxBlurViewController<UITableViewDelegate, UITableViewDataSource>
 
+@property (readonly) UITableView *tableView;
+
 @end
