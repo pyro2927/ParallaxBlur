@@ -13,6 +13,7 @@
 - (void)setTitleText:(NSString*)text;
 - (void)setSubtitleText:(NSString*)text;
 - (void)selLabelBackground:(UIColor*)color;
+- (void)setLabelBackgroundGradientColor:(UIColor*)bottomColor;
 - (CGFloat)horizontalOffset;
 
 @end

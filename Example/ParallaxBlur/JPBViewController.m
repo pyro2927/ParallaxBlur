@@ -21,6 +21,7 @@
     [self setHeaderImage:[UIImage imageNamed:@"meatballs.jpeg"]];
     [self setTitleText:@"The Best Title in the World"];
     [self setSubtitleText:@"ikea meatballs are the bomb"];
+    [self setLabelBackgroundGradientColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.7f]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

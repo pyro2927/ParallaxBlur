@@ -55,4 +55,17 @@
     _labelBackground.backgroundColor = color;
 }
 
+- (void)setLabelBackgroundGradientColor:(UIColor*)bottomColor{
+    //build gradient with top clear
+    UIColor *topColor = [UIColor clearColor];
+    NSArray *gradientColors = [NSArray arrayWithObjects:(id)topColor.CGColor, (id)bottomColor.CGColor, nil];
+    NSArray *gradientLocations = [NSArray arrayWithObjects:[NSNumber numberWithInt:0.0],[NSNumber numberWithInt:1.0], nil];
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.colors = gradientColors;
+    gradientLayer.locations = gradientLocations;
+    gradientLayer.frame = CGRectMake(0, 0, CGRectGetWidth(_labelBackground.frame), CGRectGetHeight(_labelBackground.frame));
+    
+    [_labelBackground.layer insertSublayer:gradientLayer atIndex:0];
+}
+
 @end
