@@ -26,6 +26,7 @@
         _tableView.scrollEnabled = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.clipsToBounds = NO;
     }
     return _tableView;
 }

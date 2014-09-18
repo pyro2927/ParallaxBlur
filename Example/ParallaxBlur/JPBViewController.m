@@ -27,4 +27,8 @@
     return 30; //helps for testing scrolling on iPad
 }
 
+- (CGFloat)horizontalOffset{
+    return 50.0f;
+}
+
 @end

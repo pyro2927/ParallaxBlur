@@ -24,19 +24,23 @@
     _labelBackground = [[UIView alloc] initWithFrame:CGRectMake(0, [self headerHeight] - 60, self.view.frame.size.width, 60)];
     [self addHeaderOverlayView:_labelBackground];
     
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, [self headerHeight] - 50, self.view.frame.size.width - 30, 25)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake([self horizontalOffset], [self headerHeight] - 50, self.view.frame.size.width - 15 - [self horizontalOffset], 25)];
     [_titleLabel setBackgroundColor:[UIColor clearColor]];
     [_titleLabel setTextColor:[UIColor whiteColor]];
     [_titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
     [_titleLabel setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
     [self addHeaderOverlayView:_titleLabel];
     
-    _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, [self headerHeight] - 25, self.view.frame.size.width - 30, 15)];
+    _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake([self horizontalOffset], [self headerHeight] - 25, self.view.frame.size.width - 15 - [self horizontalOffset], 15)];
     [_subtitleLabel setBackgroundColor:[UIColor clearColor]];
     [_subtitleLabel setTextColor:[UIColor whiteColor]];
     [_subtitleLabel setFont:[UIFont systemFontOfSize:12]];
     [_subtitleLabel setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
     [self addHeaderOverlayView:_subtitleLabel];
+}
+
+- (CGFloat)horizontalOffset{
+    return 15.0f;
 }
 
 - (void)setTitleText:(NSString*)text{
