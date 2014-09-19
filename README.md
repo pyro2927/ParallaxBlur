@@ -33,6 +33,18 @@ You can also more heavily customize the header by using `addHeaderOverlayView:`.
     [imageView setImage:[UIImage imageNamed:@"awesome.jpg"]];
     [self addHeaderOverlayView:imageView];
 
+## Loading Images Asynchronously
+
+If you want to load remote images, I'd recommend using [SDWebImage](https://github.com/rs/SDWebImage).  Example for using it with ParallaxBlur:
+
+    [[SDWebImageManager sharedManager] downloadImageWithURL:headerImageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        //Track progress if you wish
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        if (finished) {
+          [self setHeaderImage:image];
+        }
+    }];
+
 ## Geeky Stuff
 
 ![](./asplode.png)
