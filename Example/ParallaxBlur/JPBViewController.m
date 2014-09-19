@@ -22,6 +22,17 @@
     [self setTitleText:@"The Best Title in the World"];
     [self setSubtitleText:@"ikea meatballs are the bomb"];
     [self setLabelBackgroundGradientColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:0.7f]];
+    
+    CGFloat headerHeight = [self headerHeight];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(5, headerHeight - 55, 44, 44)];
+    [button setTitle:@"Tap" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(alert:) forControlEvents:UIControlEventTouchUpInside];
+    [self addHeaderOverlayView:button];
+}
+
+- (void)alert:(UIButton*)sender{
+    [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"You can even add buttons to the header!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:@":)", nil] show];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
