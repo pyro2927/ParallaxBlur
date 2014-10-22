@@ -54,15 +54,20 @@ static CGFloat IMAGE_HEIGHT = 320.0f;
     _headerImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [_headerImageView setContentMode:UIViewContentModeScaleAspectFill];
     _headerImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [_headerImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerImageTapped:)]];
+    [_headerImageView setUserInteractionEnabled:YES];
     [_backgroundScrollView addSubview:_headerImageView];
     
     _blurredImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_backgroundScrollView.frame), CGRectGetHeight(_backgroundScrollView.frame))];
     [_blurredImageView setContentMode:UIViewContentModeScaleAspectFill];
     _blurredImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_blurredImageView setAlpha:0.0f];
+    [_blurredImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerImageTapped:)]];
+    [_blurredImageView setUserInteractionEnabled:YES];
     
     _floatingHeaderView = [[UIView alloc] initWithFrame:_backgroundScrollView.frame];
     [_floatingHeaderView setBackgroundColor:[UIColor clearColor]];
+    [_floatingHeaderView setUserInteractionEnabled:NO];
     
     [_backgroundScrollView addSubview:_blurredImageView];
     
@@ -163,6 +168,13 @@ static CGFloat IMAGE_HEIGHT = 320.0f;
 
 - (UIScrollView*)mainScrollView{
     return _mainScrollView;
+}
+
+- (void)headerImageTapped:(UITapGestureRecognizer*)tapGesture
+{
+    if ([self.interactionsDelegate respondsToSelector:@selector(didTapHeaderImageView:)]) {
+        [self.interactionsDelegate didTapHeaderImageView:_headerImageView];
+    }
 }
 
 @end
