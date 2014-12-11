@@ -90,6 +90,11 @@ static CGFloat IMAGE_HEIGHT = 320.0f;
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self setNeedsScrollViewAppearanceUpdate];
+}
+
+- (void)setNeedsScrollViewAppearanceUpdate
+{
     _mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), _contentView.contentSize.height + CGRectGetHeight(_backgroundScrollView.frame));
 }
 

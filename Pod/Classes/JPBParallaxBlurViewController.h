@@ -17,6 +17,11 @@
 - (CGFloat)headerHeight;
 - (UIScrollView*)mainScrollView;
 
+/**
+ *  This should be called whenever the content size of the scrollview need to be adjusted.
+ */
+- (void)setNeedsScrollViewAppearanceUpdate;
+
 @property (weak, nonatomic, readwrite) id <JPBParallaxBlurInteractionsDelegate> interactionsDelegate;
 
 @end
