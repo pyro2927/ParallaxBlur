@@ -55,6 +55,28 @@
     _labelBackground.backgroundColor = color;
 }
 
+
+- (void)setTitleFont:(UIFont*)font{
+    [_titleLabel setFont:font];
+
+}
+
+- (void)setSubtitleFont:(UIFont*)font{
+    [_subtitleLabel setFont:font];
+    
+}
+
+- (void)setTitleTextColor:(UIColor*)color{
+    [_titleLabel setTextColor:color];
+    
+}
+
+
+- (void)setSubtitleTextColor:(UIColor*)color{
+    [_subtitleLabel setTextColor:color];
+    
+}
+
 - (void)setLabelBackgroundGradientColor:(UIColor*)bottomColor{
     //build gradient with top clear
     UIColor *topColor = [UIColor clearColor];
