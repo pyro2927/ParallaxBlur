@@ -14,6 +14,10 @@
 - (void)setSubtitleText:(NSString*)text;
 - (void)selLabelBackground:(UIColor*)color;
 - (void)setLabelBackgroundGradientColor:(UIColor*)bottomColor;
+- (void)setTitleFont:(UIFont*)font;
+- (void)setSubtitleFont:(UIFont*)font;
+- (void)setTitleTextColor:(UIColor*)color;
+- (void)setSubtitleTextColor:(UIColor*)color;
 - (CGFloat)horizontalOffset;
 
 @end
